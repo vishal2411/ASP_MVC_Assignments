@@ -1,0 +1,90 @@
+﻿@model MVC_Assignment1.Models.FootBallLeague
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <center >
+        <div class="form-horizontal">
+
+            <h1>FootBallLeague</h1>
+            <hr />
+            <h3> Add Match Details</h3>
+
+            <br><br>
+
+            <!-- Match ID Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatchId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MatchId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MatchId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Team Name 1 Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TeamName1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TeamName1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TeamName1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!---- Team Name 2 Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TeamName2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TeamName2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TeamName2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--- Match Status Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatchStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.MatchStatus, new List<SelectListItem> {
+                        new SelectListItem { Text="Draw", Value="Draw"},
+                         new SelectListItem { Text="Win", Value="Win"}
+                    }, "Select Match Status", htmlAttributes: new { @class = "form-control" })
+
+                   
+                    @Html.ValidationMessageFor(model => model.MatchStatus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+          
+            <!--- Winning Team Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.WinningTeam, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WinningTeam, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WinningTeam, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--- Points Column -->>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Points, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Points, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Points, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save Match Details" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </center>
+
+}
+
