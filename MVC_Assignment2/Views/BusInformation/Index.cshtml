@@ -1,0 +1,89 @@
+﻿@model MVC_Assignment2.Models.BusInformation
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>BusInformation</h4>s
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BoardingPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(model => model.BoardingPoint, new List<SelectListItem> {
+                     new SelectListItem { Text="BGL", Value="BGL"},
+                      new SelectListItem { Text="CHN", Value="CHN"},
+                      new SelectListItem { Text="HYD", Value="HYD"},
+                      new SelectListItem { Text="MUM", Value="MUM"},
+                      new SelectListItem { Text="PUN", Value="PUN"},
+                 }, "Select Boarding Point", htmlAttributes: new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.BoardingPoint, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DroppingPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DroppingPoint, new List<SelectListItem> {
+                    new SelectListItem { Text="BGL", Value="BGL"},
+                     new SelectListItem { Text="CHN", Value="CHN"},
+                     new SelectListItem { Text="HYD", Value="HYD"},
+                     new SelectListItem { Text="MUM", Value="MUM"},
+                     new SelectListItem { Text="PUN", Value="PUN"}
+                }, "Select Dropping Point", htmlAttributes: new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.DroppingPoint, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TravelDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.TravelDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(model => model.TravelDate, "", new { @class = "text-dange" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save Bus Data" class="btn btn-default" />
+        </div>
+    </div>
+
+  
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
